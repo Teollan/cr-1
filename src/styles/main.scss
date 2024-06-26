@@ -1,0 +1,123 @@
+$d-transition-duration: 1s;
+
+$c-gentle-highlight: #EEE;
+$c-main-ink: #2F4F4F;
+$c-secondary-ink: #000;
+$c-rank-ink: #8B0000;
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 20.7px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.people {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+
+  @media (width > 1000px) {
+    grid-template-columns: repeat(4, 200px);
+  }
+
+  gap: 40px 30px;
+
+  background: #666;
+}
+
+.person {
+  position: relative;
+
+  width: 200px;
+
+  &__image {
+    margin-bottom: 8px;
+
+    &-photo {
+      width: 100%;
+      height: 100%;
+  
+      border-radius: 50%;
+    }
+  
+    &-rank {
+      position: absolute;
+      top: 100px - 16px;
+      right: 10px;
+  
+      display: block;
+      width: 32px;
+      height: 32px;
+  
+      background-color: white;
+      border-radius: 50%;
+  
+      text-align: center;
+      line-height: 32px;
+      color: $c-rank-ink;
+    }
+  }
+
+
+  &__details {
+    text-align: center;
+
+    &-name {
+      color: $c-main-ink;
+      font-size: 20px;
+      line-height: 23px;
+
+      margin-bottom: 9px;
+    }
+  }
+
+  &__extra {
+    visibility: hidden;
+    position: absolute;
+    
+    padding-bottom: 16px;
+
+    color: $c-secondary-ink;
+    text-align: center;
+
+    &-sport {
+      &::after {
+        content: ",";
+      }
+    }
+
+    &-pay {
+      &::before {
+        content: "$";
+      }
+
+      &::after {
+        content: "M";
+      }
+    }
+
+    transition-duration: $d-transition-duration;
+    transition-property: background-color;
+    .person:hover & {
+      visibility: visible;
+      width: 100%;
+      background-color: $c-gentle-highlight;
+      border-radius:  0 0 12px 12px;
+    }
+  }
+
+  transition-property: background-color, transform;
+  transition-duration: $d-transition-duration;
+  &:hover {
+    position: relative;
+    z-index: 1;
+    border-radius: 12px 12px 0 0;
+    background-color: $c-gentle-highlight;
+    transform: scale(1.33);
+  }
+}
