@@ -35,6 +35,8 @@ body {
 
   width: 200px;
 
+  border-radius: 12px 12px 0 0;
+
   &__image {
     margin-bottom: 8px;
 
@@ -111,8 +113,8 @@ body {
     }
   }
 
-  transition-property: background-color, transform;
   transition-duration: $d-transition-duration;
+  transition-property: background-color, transform;
   &:hover {
     position: relative;
     z-index: 1;
